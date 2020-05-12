@@ -9,11 +9,13 @@ const initState = {
 export default (state = initState, { type, ...payload }) => {
   switch (type) {
     case REQUEST_START:
-      return { ...state, loading: true, employees: null }
+      return { ...state, loading: true, photos: null }
     case REQUEST_SUCCESS:
-      return { ...state, loading: false, ...payload }
+      const { photos } = payload
+      return { ...state, loading: false, photos }
     case REQUEST_FAIL:
       const { error } = payload
+      console.log(error)
       return { ...state, loading: false, error }
     default:
       return state

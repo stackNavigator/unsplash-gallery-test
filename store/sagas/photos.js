@@ -13,7 +13,20 @@ export function* getPhotosList() {
     }
   })
   const { status } = response
-  console.log(status)
+  if (status === 200) {
+    const jsonResponse = yield response.json()
+    const photos = jsonResponse.map(({ id, alt_description, urls: { thumb, regular },
+      user: { name } }) => ({
+        id,
+        caption: alt_description,
+        thumbUrl: thumb,
+        fullScreenUrl: regular,
+        author: name
+      }))
+    return yield put({ type: REQUEST_SUCCESS, photos })
+  }
+  const jsonResponse = JSON.stringify((yield response.json()).errors)
+  return yield put({ type: REQUEST_FAIL, error: jsonResponse })
 }
 
 export function* getPhoto() {
