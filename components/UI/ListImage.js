@@ -8,7 +8,7 @@ const shrinkedScale = 0.8
 const normalScale = 1
 const animationDuration = 100
 
-const ListImage = ({ uri }) => {
+const ListImage = ({ uri, fullScreenUrl }) => {
   const scale = useRef(new Animated.Value(normalScale)).current
   const animateScale = toValue => Animated.timing(scale, {
     toValue,
@@ -21,7 +21,7 @@ const ListImage = ({ uri }) => {
       style={{ transform: [{ scaleX: scale }, { scaleY: scale }] }}
       onPressIn={() => animateScale(shrinkedScale).start()}
       onPressOut={() => animateScale(normalScale).start()}
-      onPress={() => navigate('Photo')}>
+      onPress={() => navigate('Photo', { uri: fullScreenUrl })}>
       <Image
         style={styles.image}
         source={{ uri }} />

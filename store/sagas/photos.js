@@ -28,7 +28,3 @@ export function* getPhotosList() {
   const jsonResponse = JSON.stringify((yield response.json()).errors)
   return yield put({ type: REQUEST_FAIL, error: jsonResponse })
 }
-
-export function* getPhoto() {
-  yield put({ type: REQUEST_START })
-}

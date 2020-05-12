@@ -1,15 +1,19 @@
 import React from 'react'
 import { StyleSheet, SafeAreaView, Image } from 'react-native'
+import { useRoute } from '@react-navigation/native'
 
 import { FULLSCREEN_WIDTH, FULLSCREEN_HEIGHT } from '../../store/constants'
 
-const Photo = () => (
-  <SafeAreaView>
-    <Image
-      style={styles.fullScreenImage}
-      source={{ uri: 'http://lorempixel.com/500/500' }} />
-  </SafeAreaView>
-)
+const Photo = () => {
+  const { params: { uri } } = useRoute()
+  return (
+    < SafeAreaView >
+      <Image
+        style={styles.fullScreenImage}
+        source={{ uri }} />
+    </SafeAreaView >
+  )
+}
 
 const styles = StyleSheet.create({
   fullScreenImage: {
