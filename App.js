@@ -4,8 +4,8 @@ import { NavigationContainer } from '@react-navigation/native'
 import { createStackNavigator } from '@react-navigation/stack'
 import { SafeAreaProvider } from 'react-native-safe-area-context'
 
-import List from './components/List'
-import Photo from './components/Photo'
+import List from './components/Screens/List'
+import Photo from './components/Screens/Photo'
 
 const Stack = createStackNavigator()
 
